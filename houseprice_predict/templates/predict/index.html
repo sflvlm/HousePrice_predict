@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <title>predict</title>
+    <script type="text/javascript" src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/register.js' %}"></script>
+    <!--<script type="text/javascript">-->
+        <!--$('#submit').click(function () {-->
+            <!--area = $('#area').val();-->
+            <!--room_num = $('#room_num').val();-->
+            <!--hall_num = $('#hall_num').val();-->
+            <!--floor = $('#floor').val();-->
+            <!--dire = $('#dire').val();-->
+            <!--site = $('#site').val();-->
+            <!--csrf = $('input[name="csrfmiddlewaretoken"]').val()-->
+            <!--params = {'area':area,'room_num':room_num,'hall_num':hall_num,'floor':floor,-->
+                     <!--'dire':dire,'site':site,'csrfmiddlewaretoken':csrf}-->
+            <!--$.post('/data_analysis', params, function (data) {-->
+                <!--alert(data.price)-->
+            <!--})-->
+        <!--})-->
+    <!--</script>-->
+    <style type="text/css">
+    .error_tip{height:30px;line-height:30px;margin-left:70px;color:#e62e2e;display:none;}
+    </style>
+</head>
+<body>
+    <form action="/data_analysis" method="post">
+        {% csrf_token %}
+        <p>
+            <label>面积：</label><input type="text" name="area" id="area"/>
+            <span class="error_tip">提示信息</span>
+        </p>
+        <p>
+            <label>房间数：</label><input type="text" name="room_num" id="room_num"/>
+            <span class="error_tip">提示信息</span>
+        </p>
+        <p>
+            <label>客厅数：</label><input type="text" name="hall_num" id="hall_num"/>
+            <span class="error_tip">提示信息</span>
+        </p>
+        <p>
+            <label>楼层：</label>
+            <select name="floor" id="floor">
+                <option value="1">低</option>
+                <option value="2">中</option>
+                <option value="3">高</option>
+            </select>
+        </p>
+         <p>
+            <label>朝向：</label>
+            <select name="dire" id="dire">
+                <option value="1">南向</option>
+                <option value="2">南北向</option>
+            </select>
+        </p>
+        <p>
+            <label>位置：</label>
+            <select name="site" id="site">
+                <option value="1">高行</option>
+                <option value="2">南码头</option>
+                <option value="3">昆山</option>
+                <option value="4">光新</option>
+                <option value="5">春申</option>
+                <option value="6">塘桥</option>
+                <option value="7">嘉兴</option>
+                <option value="8">康健</option>
+                <option value="9">顾村</option>
+                <option value="10">南桥</option>
+                <option value="11">曲阳</option>
+                <option value="12">杨行</option>
+                <option value="13">新天地</option>
+                <option value="13">临平路</option>
+                <option value="15">长寿路</option>
+                <option value="16">嘉定城区</option>
+                <option value="17">天山</option>
+                <option value="18">重固</option>
+                <option value="19">青浦城区</option>
+                <option value="20">华新</option>
+                <option value="21">曹杨</option>
+                <option value="22">泗泾</option>
+                <option value="23">罗店</option>
+                <option value="24">金桥</option>
+                <option value="25">陆家嘴</option>
+                <option value="26">中原</option>
+                <option value="27">北新泾</option>
+                <option value="28">曹家渡</option>
+                <option value="29">金山新城</option>
+                <option value="30">御桥</option>
+                <option value="31">黄兴公园</option>
+                <option value="32">徐泾</option>
+                <option value="33">浦江</option>
+                <option value="34">莘庄</option>
+                <option value="35">淞宝</option>
+                <option value="36">康桥</option>
+            <!--'东外滩', '古北', '临港新城', '北蔡', '古美',-->
+
+           <!--'金杨', '惠南', '世博', '华漕', '不夜城', '白鹤', '田林', '张江', '西藏北路', '大宁',-->
+
+           <!--'颛桥', '杨东', '三林', '花木', '江宁路', '马桥', '奉城', '江桥', '嘉定新城', '周浦',-->
+
+           <!--'高境', '万里', '海湾旅游区', '华泾', '松江老城', '江湾镇', '金山其他', '虹桥', '航头', '凉城',-->
+
+           <!--'唐镇', '长征', '共康', '大华', '月浦', '赵巷', '金汇', '联洋', '植物园', '松江新城',-->
+
+           <!--'新江湾城', '新桥', '源深', '上大', '老西门', '淮海中路', '金虹桥', '世纪公园', '金汇镇',-->
+
+           <!--'西郊', '周家嘴路', '静安寺', '长桥', '曹路', '安亭', '大场镇', '长风', '通河', '蓬莱公园',-->
+
+           <!--'松江大学城', '九亭', '彭浦', '徐家汇', '洋泾', '黄浦滨江', '马陆', '共富', '老闵行', '董家渡',-->
+
+           <!--'佘山', '川沙', '五角场', '石化', '淞南', '龙柏', '闸北公园', '控江路', '新场', '静安新城',-->
+
+           <!--'万体馆', '徐汇滨江', '莘闵别墅', '上海南站', '鞍山', '龙华', '七宝', '南翔', '青浦新城',-->
+
+           <!--'西渡', '中山公园', '桃浦', '五里桥', '打浦桥', '真如', '梅陇', '其他', '车墩', '新华路',-->
+
+           <!--'斜土路', '罗阳', '四川北路', '建国西路', '外高桥', '华东理工', '北外滩', '外冈', '南京西路',-->
+
+           <!--'朱家角', '杨浦大桥', '庄行', '鲁迅公园', '中远两湾城', '张庙', '崇明其他', '永和', '甘泉',-->
+
+           <!--'朱泾', '合庆', '吴泾', '丰庄', '奉贤其他', '金山', '武宁', '南门', '柘林', '泥城', '豫园',-->
+
+           <!--'阳城', '衡山路', '航华', '菊园新区', '仙霞', '潍坊', '真光', '镇宁路', '宜川', '碧云',-->
+
+           <!--'罗泾', '海湾', '浦东世博'-->
+            </select>
+        </p>
+        <p>
+            <input type="submit" name="" value="提交" id="submit">
+        </p>
+    </form>
+    <p>
+        房屋价格为：{{ price }}
+    </p>
+    {{ errmsg }}
+</body>
+</html>
